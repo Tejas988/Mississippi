@@ -1,0 +1,50 @@
+<!-- Material form login -->
+<%- include('../includes/head.ejs') %> 
+  <body style="background-image: url('https://imgur.com/IpFjUdG.png');" >
+    <%- include('../includes/nav.ejs') %> 
+    <div >
+    <div class="container mx-50" style="border-style: inset;margin-top:5%;width: 50%;margin: 8% auto;padding: 35px">
+<!-- Default form login -->
+<form class="text-center border border-light p-5" action="/login" method="POST">
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+  <!-- Password -->
+  <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+  <div class="d-flex justify-content-around">
+      <div>
+          <!-- Remember me -->
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+              <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+          </div>
+      </div>
+      <div>
+          <!-- Forgot password -->
+          <a href="">Forgot password?</a>
+      </div>
+  </div>
+
+  <!-- Sign in button -->
+  <button class="btn btn-info btn-block my-4 " style="width: 20%;margin:auto;" type="submit">Login</button>
+
+
+  <!-- Register -->
+  <p>Not a member?
+      <a href="/signup">Register</a>
+  </p>
+</form>
+
+  </div>
+
+</div>
+</div>
+</div>
+<%- include('../includes/foot.ejs') %> 
+</body>
+</html>
+<!-- Material form login -->

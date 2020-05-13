@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %> 
+  <body style="background-image: url('https://imgur.com/7z17C8M.png');">
+    <%- include('../includes/nav.ejs') %> 
+    <div class="container-fluid" style="margin-top: 2%;">
+        <% if (prods.length>0) { %>
+         <% for (x in prods) { %>
+        <div class="card"  style="width: 18rem;display: inline-block;margin: 7px;box-shadow: 10px 10px 5px grey;">
+          <img src=<%= prods[x].imageURL %> style="width:100%;height:250px;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h2 class="card-title"><%= prods[x].title %></h5>
+            <hr>
+            <h5 class="card-title">Price : <%= prods[x].price %></h2>
+            <a href="/products/<%=prods[x]._id%>" class="btn btn-primary">Details</a>
+            <div style="display: inline-block;">
+              <% if (isAuthenticated) {%> 
+            <form method="POST" action="/cart">
+              <input type="hidden" name="id" value="<%=prods[x]._id%>">
+              <input type="hidden" name="price" value="<%= prods[x].price %>">
+              <button type="submit" class="btn btn-warning" >Add to Cart</button>  
+            </form>
+          <% } %> 
+          </div>
+          </div>
+        </div> 
+      <% } %>
+        <% }%>
+      </div>
+
+    <%- include('../includes/foot.ejs') %> 
+  </body>
+</html>

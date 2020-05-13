@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" href="#">GO ONLINE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item  mx-2 <%= pg==='shop'? 'active':'' %>  ">
+          <a class="nav-link" href="/">Shop<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item  mx-2 <%= pg==='product-list'? 'active':'' %> ">
+          <a class="nav-link"    href="/products">Products</a>
+        </li>
+        <% if (isAuthenticated) {%> 
+        <li class="nav-item  mx-2 <%= pg==='order'? 'active':'' %>  ">
+          <a class="nav-link" href="/orders">Orders<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item  mx-2 <%= pg==='cart'? 'active':'' %>  ">
+          <a class="nav-link" href="/cart">Cart<span class="sr-only">(current)</span></a>
+        </li>
+      
+        <li class="nav-item  mx-2 <%= pg==='add_p'? 'active':'' %> ">
+          <a class="nav-link"    href="/admin/add-product">Add Product</a>
+        </li>
+        <li class="nav-item  mx-2 <%= pg==='admin_prod'? 'active':'' %> ">
+          <a class="nav-link"    href="/admin/products">Admin Products</a>
+        </li>
+      <% } %> 
+      </ul>
+      <ul class="navbar-nav ml-auto" >
+        <% if (!isAuthenticated) {%> 
+        <li class="nav-item  mx-2 <%= pg==='login'? 'active':'' %> ">
+          <a class="nav-link"   href="/login">Login</a>
+        </li>
+        <li class="nav-item  mx-2 <%= pg==='signup'? 'active':'' %> ">
+          <a class="nav-link"   href="/signup">SignUp</a>
+        </li>
+        <% } else {%> 
+        <li class="nav-item  mx-2 ">
+          <form method="POST" action="/logout">
+            <button type="submit" class="btn btn-dark" >Logout</button>  
+          </form>
+        </li>
+        <% } %> 
+      </ul>
+    </div>
+  </nav>
