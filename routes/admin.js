@@ -1,17 +1,28 @@
 const express = require("express");
 const path = require("path");
+const {check,body} = require('express-validator')
 const adminControllers = require("../controllers/admin")
 const isAuthenticated = require('../middleware/protectRoutes');
 
 const router = express.Router();
 
 
-router.post("/add-product", isAuthenticated,adminControllers.postAddProduct);
+router.post("/add-product",[
+body('product').isString().isLength({min:3}).trim(),
+body('price').isNumeric(),
+body('description').isLength({min:5,max:250}).trim()
+
+], isAuthenticated,adminControllers.postAddProduct);
 router.get("/add-product", isAuthenticated,adminControllers.getAddProduct);
 router.get("/products", isAuthenticated,adminControllers.adminProducts);
-router.get("/delete-product/:productId",isAuthenticated,adminControllers.DeleteItem);
+router.delete("/delete-product/:productId",isAuthenticated,adminControllers.DeleteItem);
 router.get("/edit-product/:productId", isAuthenticated,adminControllers.getEditProduct)
-router.post("/edit-product/", isAuthenticated,adminControllers.postEditProduct);
+router.post("/edit-product/",[
+    body('product').isString().isLength({min:3}).trim(),
+    body('price').isNumeric(),
+    body('description').isLength({min:5,max:250}).trim()
+    
+    ], isAuthenticated,adminControllers.postEditProduct);
 
 
 

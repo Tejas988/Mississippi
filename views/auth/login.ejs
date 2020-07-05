@@ -1,42 +1,44 @@
 <!-- Material form login -->
 <%- include('../includes/head.ejs') %> 
-  <body style="background-image: url('https://imgur.com/IpFjUdG.png');" >
+<body style="background-image: linear-gradient(to right,#42275a, #734b6d);" >
     <%- include('../includes/nav.ejs') %> 
     <div >
+      
     <div class="container mx-50" style="border-style: inset;margin-top:5%;width: 50%;margin: 8% auto;padding: 35px">
+      <% if(errormsg) {%> 
+        <div class="alert alert-danger" role="alert">
+          <%= errormsg %> 
+        </div>
+      <%} %> 
 <!-- Default form login -->
 <form class="text-center border border-light p-5" action="/login" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
-  <p class="h4 mb-4">Sign in</p>
+  <p class="h4 mb-4" style="color: white;">Sign in</p>
 
   <!-- Email -->
-  <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+  <input type="email" name="email" id="defaultLoginFormEmail" class="<%= errormsg==="Invalid Email"?'form-control mb-4 is-invalid':(oldData.email)?'form-control mb-4 is-valid':'form-control mb-4'%>" value="<%=oldData.email%>" placeholder="E-mail">
 
   <!-- Password -->
-  <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+  <input type="password" name="password" class="<%= errormsg==="Invalid password"?'form-control mb-4 is-invalid':(oldData.password)?'form-control mb-4 is-valid':'form-control mb-4'%>" id="defaultLoginFormPassword" value="<%=oldData.password%>" placeholder="Password">
 
-  <div class="d-flex justify-content-around">
-      <div>
-          <!-- Remember me -->
-          <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-              <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-          </div>
-      </div>
-      <div>
-          <!-- Forgot password -->
-          <a href="">Forgot password?</a>
-      </div>
-  </div>
+  
 
   <!-- Sign in button -->
   <button class="btn btn-info btn-block my-4 " style="width: 20%;margin:auto;" type="submit">Login</button>
 
 
   <!-- Register -->
-  <p>Not a member?
-      <a href="/signup">Register</a>
+  
+  <div class="d-flex justify-content-around">
+    <p style="color: thistle;">Not a member?
+      <a href="/signup" style="color: burlywood;">Register</a>
   </p>
+    <div>
+        <!-- Forgot password -->
+        <a style="color: burlywood;"  href="/forgotpass">Forgot password?</a>
+    </div>
+</div>
 </form>
 
   </div>

@@ -1,0 +1,135 @@
+a{
+    color: #11999E;
+}
+a:hover{
+    color: #EAF6F6;
+}
+body{
+    margin: 0;
+    text-align: center;
+}
+.comp{
+    
+        width: 25%;
+        border-radius: 100%;
+        border-width: 1px;
+        float: right;
+        margin-left: 30px;
+
+}
+.chill{
+    width: 25% ;
+    border-radius: 100%;
+    border-width: 1px;
+    float: left;
+    margin-right: 30px;
+}
+.contact-me{
+    padding: 36px;
+}
+.bottom-cloud{
+    position: absolute;
+    left:30%;
+    bottom:50%;
+
+}
+.bottom-container{
+    padding: 36px;
+    background-color: #66BFBF;
+}
+.footer-link{
+    margin: auto 10px auto 10px;
+    text-decoration: none;
+    
+}
+h2{
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    color:#66BFBF;
+}
+h3{
+    font-size: 15px;
+    font-family: sans-serif;
+    color: #11999E;
+    
+
+}
+hr{
+    width: 5%;
+    border-top: 8px dotted #EAF6F6;
+    border-bottom: none;
+    
+}
+#name{
+    font-family: 'Sacramento', cursive;
+    font-size: 65px;/*16px==1rem(em if u want upstream font size to be inhertied)==100%*/
+    margin-bottom: 0;
+    color:#66BFBF;
+}
+.middle-container{
+    position: relative;
+    text-align: center;
+}
+p{
+    line-height: 2;
+    font-size: 18px;
+    color: #40514E;
+    font-weight: 600;
+}
+.profile{
+    padding-bottom: 36px;
+
+}
+.profpic{
+    width: 200px;
+    border-radius: 100%;
+    border-width: 1px;
+    margin: 50px auto 10px auto;
+}
+.skills{
+    padding: 36px;
+}
+
+.skill-row{
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left;
+    
+}
+#top-container{
+    background-color:#E4F9F5;
+    position: relative;
+    padding-top: 100px;
+
+}
+.top-cloud{
+    position: absolute;
+    right: 30%;
+    top:10%
+  
+}
+
+
+.btn {
+	box-shadow:inset 0px 21px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#11999E;
+	border-radius:24px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 28px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}

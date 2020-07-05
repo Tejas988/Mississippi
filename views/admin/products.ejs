@@ -2,21 +2,48 @@
   <body style="background-image: url('https://imgur.com/7z17C8M.png');">
     <%- include('../includes/nav.ejs') %> 
     <div class="container-fluid" style="margin-top: 2%;">
+      <div style="display: flex;justify-content: space-evenly;align-items: center;"></div>
         <% if (prods.length>0) { %>
          <% for (x in prods) { %>
-        <div class="card"  style="width: 18rem;display: inline-block;margin: 7px;box-shadow: 10px 10px 5px grey;">
-          <img src=<%= prods[x].imageURL %> style="width:100%;height:250px;" class="card-img-top" alt="...">
+        <div class="card" id="card-<%=prods[x]._id.toString()%>" style="width: 18rem;display: inline-block;box-shadow: 10px 10px 5px grey;">
+          <img src="/<%= prods[x].imageURL%>" style="width:100%;height:250px" class="card-img-top" alt="...">
           <div class="card-body">
             <h2 class="card-title"><%= prods[x].title %></h5>
             <hr>
             <h5 class="card-title">Price : <%= prods[x].price %></h2>
+              <input type="hidden" class="csrf" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" class="prodID" value="<%=prods[x]._id%>" name="productID"/>
             <a href="/admin/edit-product/<%=prods[x]._id%>" class="btn btn-info">Edit</a>
-            <a href="/admin/delete-product/<%=prods[x]._id%>" class="btn btn-danger">Delete</a>  
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#K-<%=prods[x]._id.toString()%>">
+              Delete
+            </button>  
           </div>
         </div> 
+        <div class="modal fade" id="K-<%=prods[x]._id.toString()%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete <%= prods[x].title %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete <%= prods[x].title %></p>
+                <p>Deleting <%= prods[x].title %> will remove its data from all platforms</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-danger" data-dismiss="modal" id="O<%=prods[x]._id.toString()%>" onclick="deleteProduct(this)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <% } %>
         <% }%>
       </div>
+    </div>
     <%- include('../includes/foot.ejs') %> 
+    <script src="/public/admin.js"></script>
   </body>
 </html>

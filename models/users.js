@@ -18,6 +18,8 @@ const userSchema = new Schema({
     cart:{
         items:[{productId : {type :Schema.Types.ObjectId},qty:{type :Number,required:true} }]
     },
+    resetToken : String,
+    resetTokenExpiration : Date,
   
 })
 

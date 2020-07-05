@@ -1,36 +1,34 @@
 <!-- Material form login -->
 <%- include('../includes/head.ejs') %> 
-  <body style="background-image: url('https://imgur.com/IpFjUdG.png');" >
+<body style="background-image: linear-gradient(to right,#42275a, #734b6d);" >
     <%- include('../includes/nav.ejs') %> 
     <div >
     <div class="container mx-50" style="border-style: inset;margin-top:5%;width: 50%;margin: 8% auto;padding: 35px">
+      <% if(errormsg) {%> 
+        <div class="alert alert-danger" role="alert">
+          <%= errormsg %> 
+        </div>
+      <%} %> 
+      
 <!-- Default form login -->
 <form class="text-center border border-light p-5" action="/signup" method="POST">
-
-  <p class="h4 mb-4">Sign Up</p>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <p class="h4 mb-4" style="color: white;">Sign Up</p>
 
   <!-- Email -->
-  <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+  <input type="email" class="<%= validationErrors.find(e => e.param === 'email')?'form-control mb-4 is-invalid':(oldData.email)?'form-control mb-4 is-valid':'form-control mb-4'%>" name="email" id="defaultLoginFormEmail" value="<%=oldData.email%>"  placeholder="E-mail">
 
   <!-- Password -->
-  <input type="password" name="pass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-  <input type="password" name="confirmpass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Confirm Password">
-  <div class="d-flex justify-content-around">
-      <div>
-          <!-- Remember me -->
-          <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-              <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-          </div>
-      </div>s
-  </div>
+  <input type="password" class="<%= validationErrors.find(e => e.param === 'pass')?'form-control mb-4 is-invalid':(oldData.password)?'form-control mb-4 is-valid':'form-control mb-4'%>" name="pass" id="defaultLoginFormPassword" value="<%=oldData.password%>"  placeholder="Password">
+  <input type="password" class="<%= validationErrors.find(e => e.param === 'confirmpass')?'form-control mb-4 is-invalid':(oldData.confirmpassword)?'form-control mb-4 is-valid':'form-control mb-4'%>" name="confirmpass" id="defaultLoginFormPassword"  value="<%=oldData.confirmpassword%>" placeholder="Confirm Password">
+
   <!-- Sign in button -->
   <button class="btn btn-info btn-block my-4 " style="width: 20%;margin:auto;" type="submit">Signup</button>
 
 
   <!-- Register -->
-  <p>Already a member?
-      <a href="/login">Login</a>
+  <p style="color: thistle;">Already a member?
+      <a style="color: burlywood;" href="/login">Login</a>
   </p>
 </form>
 

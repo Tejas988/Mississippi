@@ -1,0 +1,38 @@
+<!-- Material form login -->
+<%- include('../includes/head.ejs') %> 
+  <body style="background-image: url('https://imgur.com/IpFjUdG.png');" >
+    <%- include('../includes/nav.ejs') %> 
+    <div >
+      
+    <div class="container mx-50" style="border-style: inset;margin-top:5%;width: 50%;margin: 8% auto;padding: 35px">
+      <% if(errormsg) {%> 
+        <div class="alert alert-danger" role="alert">
+          <%= errormsg %> 
+        </div>
+      <%} %> 
+<!-- Default form login -->
+<form class="text-center border border-light p-5" action="/new-pass" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <input type="hidden" name="userID" value="<%= userID %>">
+  <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
+
+
+  <p class="h4 mb-4">Reset Password</p>
+
+  <!-- Email -->
+  <input type="email" name="password" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Password">
+
+
+  <!-- Sign in button -->
+  <button class="btn btn-info btn-block my-4 " style="width: 20%;margin:auto;" type="submit">Reset Password</button>
+</form>
+
+  </div>
+
+</div>
+</div>
+</div>
+<%- include('../includes/foot.ejs') %> 
+</body>
+</html>
+<!-- Material form login -->

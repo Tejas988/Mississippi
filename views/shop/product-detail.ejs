@@ -1,16 +1,20 @@
 <%- include('../includes/head.ejs') %> 
-  <body style="background-image: url('https://imgur.com/IpFjUdG.png');">
+  <body style="background-image: linear-gradient(to right,#2C3E50,#4CA1AF);">
     <%- include('../includes/nav.ejs') %> 
     <div class="container">
     <main style="margin: auto;text-align: center;">
-        <h2><%= product.title %></h2>
-        <hr>
-        <img style="width:350px;height:350px;"src="<%= product.imageURL %>"/>
-        <hr>
-        <h5>Price : <%= product.price %> </h5>
-        <p><%= product.description %></p>
+        <h2 style="color: white;font-weight: bold;text-transform: uppercase;"><%= product.title %></h2>
+        <hr style=" border-top: 5px dashed cadetblue; width: 50%;">
+        <img style="width:350px;height:350px;border: whitesmoke solid 2px;"src="/<%= product.imageURL %>"/>
+        <hr style=" border-top: 5px dashed cadetblue; width: 50%;">
+        <h5 style="color: wheat;">Price : <%= product.price %> </h5>
+        <p style="color: wheat;"><%= product.description %></p>
+        <hr style=" border-top: 5px dotted white; width: 3%;">
+        <h6 style="color: thistle;">Contact Email : <%= user %></h6>
+
         <% if (isAuthenticated) {%> 
         <form method="POST" action="/cart">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <input type="hidden" name="id" value="<%= product._id %>">
           <input type="hidden" name="price" value="<%= product.price %>">
           <button type="submit" class="btn btn-warning" >Add to Cart</button>  
@@ -18,7 +22,11 @@
       <% } %> 
     </main>
     </div>
+    <div class="bottom-container" style="text-align: center;">
+      <a class="footer-link" style="color: #11999E;"   href="https://www.linkedin.com/">LinkedIn</a>
+      <a class="footer-link" style="color: #11999E;" href="https://twitter.com/">Twitter</a>
+      <p style="color: #EAF6F6;font-size: 15px;">© 2020 MISSISSIPPI.</p>
+    </div>
     <%- include('../includes/foot.ejs') %> 
 </body>
 </html>
-  

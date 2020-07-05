@@ -1,16 +1,19 @@
 <%- include('../includes/head.ejs') %> 
-  <body style="background-image: url('https://imgur.com/HchIO2m.png');">
+  <body style="background-image: linear-gradient(to right,#2b5876,#4e4376)">
     <%- include('../includes/nav.ejs') %> 
     <div class="container" style="margin-top: 2%;">
       <div class="list-group">
         <% if(userOrders.length>0) { %>
           <% for (x of userOrders) { %>
             <div class="card mb-3">
-              <div class="card-header">
-                Order - # <%= x._id %> 
+              <div class="card-header" style="display: flex;  flex-direction: row;justify-content: space-between;" >
+                <div style="align-self: center;">Order - # <%= x._id %></div>
+                <div style="align-self: center;"><a class="btn btn-info" href="/orders/<%= x._id %>" style="color: white;">Bill</a></div>
+           
               </div>
-              <div class="card-header">
-                Customer email - <%= x.user.email %> 
+              <div class="card-header" style="display: flex;  flex-direction: row;" >
+                <div style="align-self: center;">  Date - <%= x.dateTime.date%> </div> 
+                  <div style="align-self: center;margin-left: 5%;">Time - <%= x.dateTime.time%></div> 
               </div>
               <div class="card-body">
                 <% for (y of x.products) { %>
@@ -29,10 +32,6 @@
         <% } %>
       </div>
     </div>
-
-
-
-
     <%- include('../includes/foot.ejs') %> 
 </body>
 </html>

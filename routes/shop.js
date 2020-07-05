@@ -9,8 +9,8 @@ router.get("/cart",isAuthenticated,shopController.getCart);
 router.post("/cart",isAuthenticated,shopController.postCart);
 router.get("/products",shopController.getProducts);
 router.get("/orders",isAuthenticated,shopController.getOrders);
-router.get("/products/:productId",isAuthenticated,shopController.getSingleProduct);
+router.get("/checkout",isAuthenticated,shopController.Checkout);
+router.get("/orders/:orderID",isAuthenticated,shopController.getBill);
+router.get("/products/:productId",shopController.getSingleProduct);
 router.post("/delete-cart",isAuthenticated,shopController.deleteCartItem);
-router.get("/add-order",isAuthenticated,shopController.postOrders);
-
 module.exports = router;
